@@ -57,6 +57,24 @@ fi
 ## ⚙️ FUNCTIONS (All Logic is Encapsulated Here)
 ## ------------------------------------------------------------------------------
 
+function safety_check() {
+    echo "" 
+    echo "🚨 SAFETY WARNING 🚨"
+    echo "This script will make permanent changes to your system, including installing packages and configuring services."
+    echo "It assumes you are running a FRESH Arch Linux base install."
+    
+
+    read -p "Have you read the README.md and understand the risks? (y/N): " -n 1 response
+    echo "" 
+    
+    if [[ "$response" != "y" ]] && [[ "$response" != "Y" ]]; then
+        echo "Exiting script. Please read the documentation before proceeding."
+        exit 1
+    fi
+    echo "✅ Proceeding with setup..."
+    echo "" 
+}
+
 function check_internet() {
     echo "🌐 Checking internet connection..."
     if ping -c 1 8.8.8.8 &> /dev/null; then
@@ -153,7 +171,6 @@ function run_maintenance() {
 
     if command -v yay &> /dev/null; then
         echo "  - Cleaning AUR build cache with yay..."
-        # yay -Sc is the equivalent of pacman -Sc for AUR build files
         yay -Sc --noconfirm 2>/dev/null || true
     fi
     
@@ -167,6 +184,7 @@ function run_maintenance() {
 
 function main() {
     echo "🚀 Starting Arch Linux setup..."
+    safety_check
     check_internet
     install_core_packages
     install_aur_helper
@@ -185,5 +203,4 @@ function main() {
     echo "Have fun with your newly functional environment!"
 }
 
-# Run the main function
 main
