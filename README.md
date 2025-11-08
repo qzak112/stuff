@@ -40,7 +40,7 @@ sudo ./install.sh
 MIT
 
 ## Known Issues
-- [ ] Test on actual hardware (currently VM only)
+- [x] Test on actual hardware
 
 ## TODO
 - [ ] Add option to skip AUR packages
