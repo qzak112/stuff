@@ -16,7 +16,7 @@
 CORE_PACKAGES=(
     "git" "vim" "btop" "neovim" "fish" "curl" "wget" "man-db"
     "firefox" "xfce4" "xfce4-goodies" "ly" "networkmanager" "alsa-utils"
-    "pulseaudio" "pulseaudio-alsa" "xdg-user-dirs" "ttf-dejavu"
+    "pulseaudio" "pulseaudio-alsa" "xdg-user-dirs" "ttf-dejavu" "xorg"
 )
 AUR_PACKAGES=(
     "discord"
